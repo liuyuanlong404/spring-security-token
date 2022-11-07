@@ -1,6 +1,7 @@
 package org.lakers.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.lakers.common.UserVo;
 import org.lakers.domain.User;
 
 /**
@@ -10,4 +11,5 @@ import org.lakers.domain.User;
  */
 public interface UserService extends IService<User> {
 
+    UserVo getUserVo();
 }

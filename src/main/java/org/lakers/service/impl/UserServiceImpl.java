@@ -1,11 +1,15 @@
 package org.lakers.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.lakers.common.UserVo;
 import org.lakers.domain.LoginUser;
 import org.lakers.domain.User;
 import org.lakers.mapper.MenuMapper;
 import org.lakers.mapper.UserMapper;
+import org.lakers.mapstruct.UserMapStruct;
 import org.lakers.service.UserService;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -26,6 +30,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     @Resource
     private MenuMapper menuMapper;
 
+    @Resource
+    private UserMapStruct mapStruct;
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         // 查询用户信息
@@ -39,5 +46,13 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         List<String> list = menuMapper.selectPermsByUserId(user.getId());
         return new LoginUser(user, list);
 
+    }
+
+    @Override
+    public UserVo getUserVo() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        LoginUser loginUser = (LoginUser) authentication.getPrincipal();
+        User user = getById(loginUser.getUser().getId());
+        return mapStruct.toUserVo(user);
     }
 }
