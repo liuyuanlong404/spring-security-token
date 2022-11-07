@@ -1,5 +1,7 @@
 package org.lakers.controller;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.lakers.common.UserVo;
 import org.lakers.domain.ResponseResult;
 import org.lakers.service.UserService;
@@ -14,12 +16,14 @@ import javax.annotation.Resource;
  *
  * @author lakers
  */
+@Api(tags = "测试管理")
 @RestController
 public class HelloController {
 
     @Resource
     private UserService userService;
 
+    @ApiOperation(value = "获取登录人信息")
     @GetMapping(value = "/helloLoginUser")
     @PreAuthorize("hasAuthority('system:dept:test')")
 //    @PreAuthorize("hasAnyAuthority('','')")

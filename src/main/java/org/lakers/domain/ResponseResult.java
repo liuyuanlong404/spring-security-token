@@ -1,6 +1,7 @@
 package org.lakers.domain;
 
 import com.alibaba.fastjson.JSON;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import org.lakers.common.BaseErrorInfo;
 import org.lakers.common.CommonEnum;
@@ -13,10 +14,13 @@ import org.lakers.common.CommonEnum;
 @Data
 public class ResponseResult<T> {
 
+    @ApiModelProperty(value = "响应状态码")
     private Integer code;
 
+    @ApiModelProperty(value = "响应信息")
     private String msg;
 
+    @ApiModelProperty(value = "响应数据")
     private T data;
 
     private ResponseResult(){
