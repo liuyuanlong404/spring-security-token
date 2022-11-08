@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiOperation;
 import org.lakers.domain.ResponseResult;
 import org.lakers.domain.User;
 import org.lakers.service.LoginService;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,7 +28,7 @@ public class LoginController {
 
     @ApiOperation(value = "登录")
     @PostMapping(value = "/user/login")
-    public ResponseResult<Map<String, String>> login(@RequestBody User user){
+    public ResponseResult<Map<String, String>> login(@RequestBody @Validated User user){
         return loginService.login(user);
     }
 

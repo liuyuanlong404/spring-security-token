@@ -55,7 +55,7 @@ public class SecurityConfig {
                 .and()
                 .authorizeRequests()
                 // 放行swagger
-                .antMatchers("/swagger-ui.html","/swagger-resources/**","/webjars/**","/v2/**","/api/**").permitAll()
+                .antMatchers("/swagger-ui.html","/swagger-resources/**","/webjars/**","/v2/**","/api/**", "/doc.html").permitAll()
                 // 放行登录接口 anonymous允许匿名用户访问,不允许已登入用户访问
                 .antMatchers("/user/login").anonymous()
                 .anyRequest().authenticated()

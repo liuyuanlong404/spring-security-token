@@ -1,9 +1,13 @@
 package org.lakers.handler;
 
 import lombok.extern.slf4j.Slf4j;
+import org.lakers.common.CommonEnum;
 import org.lakers.domain.ResponseResult;
 import org.springframework.security.access.AccessDeniedException;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -37,6 +41,17 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(AccessDeniedException.class)
     public void accessDeniedException(AccessDeniedException e) {
         throw e;
+    }
+
+    @ExceptionHandler(value = MethodArgumentNotValidException.class)
+    public <T> ResponseResult<T> methodArgumentNotValidException(MethodArgumentNotValidException e){
+        log.error(e.getMessage(), e);
+        BindingResult bindingResult = e.getBindingResult();
+        for (FieldError fieldError : bindingResult.getFieldErrors()) {
+            return new ResponseResult<>(202, fieldError.getDefaultMessage());
+        }
+
+        return new ResponseResult<>(CommonEnum.BODY_NOT_MATCH);
     }
 
 }
