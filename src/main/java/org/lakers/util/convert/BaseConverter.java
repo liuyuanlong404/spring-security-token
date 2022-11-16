@@ -2,7 +2,7 @@ package org.lakers.util.convert;
 
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -13,12 +13,8 @@ import java.util.List;
 @Component
 public class BaseConverter implements Converter {
 
-    public List<Converter> converterList = new ArrayList<>();
-
-//    public BaseConverter() {
-//        converterList.add(new IntegerConverter());
-//        converterList.add(new FloatConverter());
-//    }
+    @Resource
+    public List<Converter> converterList;
 
     @Override
     public boolean support(Class type) {

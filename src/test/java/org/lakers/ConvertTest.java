@@ -19,6 +19,8 @@ public class ConvertTest {
 
     @Test
     public void test(){
-        System.out.println(baseConverter.convert("25", Long.class));
+        Object convert = baseConverter.convert("25", Integer.class);
+        System.out.println(convert);
+        System.out.println(convert.getClass());
     }
 }

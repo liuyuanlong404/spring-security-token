@@ -1,5 +1,6 @@
 package org.lakers.util.convert;
 
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 /**
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Component;
  * @author lakers
  */
 @Component
+@Order(1)
 public class IntegerConverter implements Converter {
 
     @Override

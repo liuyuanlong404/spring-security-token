@@ -21,10 +21,10 @@ public class ConvertBeanPostProcessor implements BeanPostProcessor {
     @Override
     public Object postProcessAfterInitialization(@NotNull Object bean, @NotNull String beanName) throws BeansException {
 
-        if (bean instanceof Converter && !(bean instanceof BaseConverter)){
-            System.out.println(bean + "beanName : " + beanName);
-            converter.converterList.add((Converter) bean);
-        }
+//        if (bean instanceof Converter && !(bean instanceof BaseConverter)){
+//            System.out.println(bean + "beanName : " + beanName);
+//            converter.converterList.add((Converter) bean);
+//        }
 
         return BeanPostProcessor.super.postProcessAfterInitialization(bean, beanName);
     }
