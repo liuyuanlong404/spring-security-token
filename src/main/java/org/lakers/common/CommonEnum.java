@@ -16,7 +16,7 @@ public enum CommonEnum implements BaseErrorInfo {
     /**
      * 返回枚举
      */
-    SUCCESS(200, "成功!"),
+    SUCCESS(200, "请求成功!"),
     BODY_NOT_MATCH(400,"请求的数据格式不符!"),
     SIGNATURE_NOT_MATCH(401,"请求的数字签名不匹配!"),
     NOT_FOUND(404, "未找到该资源!"),

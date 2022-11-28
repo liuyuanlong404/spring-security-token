@@ -30,7 +30,7 @@ public class SecurityConfig {
     private AuthenticationConfiguration authenticationConfiguration;
 
     @Bean
-    public AuthenticationManager authenticationManager () throws Exception{
+    public AuthenticationManager authenticationManager() throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
     }
 
@@ -49,13 +49,13 @@ public class SecurityConfig {
     private AccessDeniedHandler accessDeniedHandler;
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http)throws Exception{
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http.csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
                 // 放行swagger
-                .antMatchers("/swagger-ui.html","/swagger-resources/**","/webjars/**","/v2/**","/api/**", "/doc.html").permitAll()
+                .antMatchers("/swagger-ui.html", "/swagger-resources/**", "/webjars/**", "/v2/**", "/api/**", "/doc.html").permitAll()
                 // 放行登录接口 anonymous允许匿名用户访问,不允许已登入用户访问
                 .antMatchers("/user/login").anonymous()
                 .anyRequest().authenticated()
