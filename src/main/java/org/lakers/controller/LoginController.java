@@ -28,13 +28,22 @@ public class LoginController {
 
     @ApiOperation(value = "登录")
     @PostMapping(value = "/user/login")
-    public ResponseResult<Map<String, String>> login(@RequestBody @Validated User user){
+    public ResponseResult<Map<String, String>> login(@RequestBody @Validated User user) {
         return loginService.login(user);
     }
 
     @ApiOperation(value = "注销")
     @GetMapping(value = "/user/logout")
-    public ResponseResult<Void> logout(){
+    public ResponseResult<Void> logout() {
         return loginService.logout();
+    }
+
+    @ApiOperation(value = "脱敏测试")
+    @PostMapping(value = "/user/test")
+    public ResponseResult<SensitiveTest> test(@RequestBody SensitivePo po) {
+        System.out.println(po);
+        SensitiveTest sensitiveTest = new SensitiveTest();
+        sensitiveTest.setSensitivePo(po);
+        return new ResponseResult<>(200, "请求成功！", sensitiveTest);
     }
 }

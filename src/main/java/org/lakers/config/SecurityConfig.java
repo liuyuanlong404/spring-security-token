@@ -58,7 +58,7 @@ public class SecurityConfig {
                 // 放行swagger
                 .antMatchers("/swagger-ui.html", "/swagger-resources/**", "/webjars/**", "/v2/**", "/api/**", "/doc.html").permitAll()
                 // 放行登录接口 anonymous允许匿名用户访问,不允许已登入用户访问
-                .antMatchers("/user/login").anonymous()
+                .antMatchers("/user/login", "/user/test").anonymous()
                 .anyRequest().authenticated()
                 .and()
                 // 将token校验添加到过滤器链中
@@ -74,6 +74,15 @@ public class SecurityConfig {
                 .cors()
                 .and()
                 .build();
+    }
+
+    public static void main(String[] args) {
+        byte b = -128;
+        try {
+            System.out.println(b >> 4);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }

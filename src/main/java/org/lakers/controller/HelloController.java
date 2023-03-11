@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created on 2022/11/3 11:23
@@ -31,8 +33,13 @@ public class HelloController {
 //    @PreAuthorize("hasAnyRole('','')")
     // 调用自己的鉴权方法
 //    @PreAuthorize("@LakersExpression.authentication('system:dept:test11')")
-    public ResponseResult<UserVo> hello(){
+    public ResponseResult<UserVo> hello() {
+        List<String> list = new ArrayList<>();
+        list.add(String.valueOf(1));
+
+
         UserVo vo = userService.getUserVo();
         return ResponseResult.success(vo);
     }
+    
 }
