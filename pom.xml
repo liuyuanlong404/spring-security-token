@@ -22,7 +22,7 @@
         <fastjson.version>2.0.17</fastjson.version>
         <java-jwt.version>4.2.1</java-jwt.version>
         <hutool-all.version>5.8.9</hutool-all.version>
-        <mybatis-plus-boot-starter.version>3.5.2</mybatis-plus-boot-starter.version>
+        <mybatis-plus-boot-starter.version>3.5.3</mybatis-plus-boot-starter.version>
         <mapstruct.version>1.5.0.RC1</mapstruct.version>
         <maven-compiler-plugin.version>0.2.0</maven-compiler-plugin.version>
         <springfox-swagger2.version>2.9.2</springfox-swagger2.version>
@@ -129,6 +129,18 @@
         <!--            <artifactId>digest-spring-boot-starter</artifactId>-->
         <!--            <version>0.0.1-SNAPSHOT</version>-->
         <!--    </dependency>-->
+
+        <dependency>
+            <groupId>com.lakers</groupId>
+            <artifactId>enable-annotation</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>RELEASE</version>
+            <scope>compile</scope>
+        </dependency>
 
     </dependencies>
 
