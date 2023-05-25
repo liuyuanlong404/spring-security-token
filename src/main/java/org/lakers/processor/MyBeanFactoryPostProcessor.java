@@ -18,7 +18,6 @@ public class MyBeanFactoryPostProcessor implements BeanDefinitionRegistryPostPro
         RootBeanDefinition beanDefinition = new RootBeanDefinition();
         beanDefinition.setBeanClass(C02Test.class);
         registry.registerBeanDefinition("c02Test", beanDefinition);
-        System.out.println("注册C02Test");
     }
 
     @Override

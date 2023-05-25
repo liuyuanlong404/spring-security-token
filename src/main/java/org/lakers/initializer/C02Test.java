@@ -1,5 +1,7 @@
 package org.lakers.initializer;
 
+import org.springframework.beans.factory.InitializingBean;
+
 import javax.annotation.PostConstruct;
 import java.util.HashMap;
 import java.util.Map;
@@ -9,7 +11,8 @@ import java.util.Map;
  *
  * @author lakers
  */
-public class C02Test {
+//@Component
+public class C02Test implements InitializingBean {
 
     public static final Map<String, String> MAP = new HashMap<>();
 
@@ -21,5 +24,10 @@ public class C02Test {
 
     public static String getMap(String key){
         return MAP.get(key);
+    }
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        System.out.println("C02test执行afterPropertiesSet()");
     }
 }

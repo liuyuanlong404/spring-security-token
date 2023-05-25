@@ -10,11 +10,12 @@ import javax.annotation.PostConstruct;
  * @author lakers
  */
 @Component
-public class BTest {
+public class BTest  {
 
     @PostConstruct
     public void showMap() {
         String lakers = C02Test.getMap("Lakers");
         System.out.println("输出-------" + lakers);
     }
+
 }
